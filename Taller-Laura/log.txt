@@ -1,0 +1,190 @@
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio
+$ git init Taller-Laura
+Initialized empty Git repository in C:/Users/laura/OneDrive/Escritorio/Taller-Laura/.git/
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio
+$ git config --global user.name "Laura"
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio
+$ git config --global user.email "laura.ricarde@correounivalle.edu.co"                        
+laura@laura12 MINGW64 ~/OneDrive/Escritorio
+$ git checkout -b feature
+fatal: not a git repository (or any of the parent directories): .git
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio
+$ cd Taller
+TALLER 2 POO.pdf  Taller-Laura/
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio
+$ cd Taller-Laura
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ git checkout -b feature
+Switched to a new branch 'feature'
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (feature)
+$ echo "Texto inicial"> archivo.txt
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (feature)
+$ git add archivo.txt
+warning: in the working copy of 'archivo.txt', LF will be replaced by CRLF the next time Git touches it
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (feature)
+$ git commit -m "Commit inicial"
+[feature (root-commit) e12e495] Commit inicial
+ 1 file changed, 1 insertion(+)
+ create mode 100644 archivo.txt
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (feature)
+$ echo "Texto agregado en feature" >> archivo.txt
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (feature)
+$ git commit -am "Segundo commit en feature"
+warning: in the working copy of 'archivo.txt', LF will be replaced by CRLF the next time Git touches it
+[feature 6f4999a] Segundo commit en feature
+ 1 file changed, 1 insertion(+)
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (feature)
+$ echo "Nuevo texto agregado" >> archivo.txt
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (feature)
+$ git commit -am "Tercer commit en feature"
+warning: in the working copy of 'archivo.txt', LF will be replaced by CRLF the next time Git touches it
+[feature 455f138] Tercer commit en feature
+ 1 file changed, 1 insertion(+)
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (feature)
+$ git checkout master
+error: pathspec 'master' did not match any file(s) known to git
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (feature)
+$ git checkout -b master
+Switched to a new branch 'master'
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ git merge feature
+Already up to date.
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ git reset --hard HEAD~1
+HEAD is now at 6f4999a Segundo commit en feature
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ git rebase feature
+Successfully rebased and updated refs/heads/master.
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ git checkout -b hotfix
+Switched to a new branch 'hotfix'
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (hotfix)
+$ echo "Corrección urgente" >> archivo.txt
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (hotfix)
+$ git commit -am "Hotfix"
+warning: in the working copy of 'archivo.txt', LF will be replaced by CRLF the next time Git touches it
+[hotfix dca9a71] Hotfix
+ 1 file changed, 1 insertion(+)
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (hotfix)
+$ git checkout master
+Switched to branch 'master'
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ git cherry-pick hotfix
+[master aee5617] Hotfix
+ Date: Sun Oct 6 16:50:26 2024 -0500
+ 1 file changed, 1 insertion(+)
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ git checkout feature
+Switched to branch 'feature'
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (feature)
+$ echo "Cambio en feature" > conflicto.txt
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (feature)
+$ git add conflicto.txt
+warning: in the working copy of 'conflicto.txt', LF will be replaced by CRLF the next time Git touches it
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (feature)
+$ git commit -am "Cambio en feature"
+[feature c679586] Cambio en feature
+ 1 file changed, 1 insertion(+)
+ create mode 100644 conflicto.txt
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (feature)
+$ git checkout master
+Switched to branch 'master'
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ echo "Cambio en master" > conflicto.txt
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ git add conflicto.txt
+warning: in the working copy of 'conflicto.txt', LF will be replaced by CRLF the next time Git touches it
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ git commit -am "Cambio en master"
+[master 94bcd0c] Cambio en master
+ 1 file changed, 1 insertion(+)
+ create mode 100644 conflicto.txt
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ git merge feature
+Auto-merging conflicto.txt
+CONFLICT (add/add): Merge conflict in conflicto.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master|MERGING)
+$ git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both added:      conflicto.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master|MERGING)
+$ code conflicto.txt
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master|MERGING)
+$ git add conflicto.txt
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master|MERGING)
+$ git commit -m "Corrección conflicto en conflicto.txt"
+[master e67d067] Corrección conflicto en conflicto.txt
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ touch README.md
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ code README.md
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ git add README.md
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ git commit -m "Solución del taller"
+[master 6a272cc] Solución del taller
+ 1 file changed, 167 insertions(+)
+ create mode 100644 README.md
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ touch log.txt
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$ code log.txt
+
+laura@laura12 MINGW64 ~/OneDrive/Escritorio/Taller-Laura (master)
+$
